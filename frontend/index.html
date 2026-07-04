@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI WordPress Agent</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="command">
+        <div class="brand">
+          <div class="mark" aria-hidden="true"></div>
+          <div>
+            <p>Market Insights</p>
+            <h1>Publishing control room</h1>
+          </div>
+        </div>
+
+        <form id="agentForm" class="composer">
+          <label for="prompt">Instruction</label>
+          <textarea id="prompt" name="prompt" required spellcheck="true" placeholder="Create a pricing page with three plans, optimize SEO, and save it as a draft."></textarea>
+
+          <label for="source">Source material</label>
+          <textarea id="source" name="source" placeholder="Optional notes, URLs, research, HTML, markdown, or copied content."></textarea>
+
+          <div class="controls">
+            <button id="runButton" type="submit">
+              <span>Run agent</span>
+              <span class="button-dot" aria-hidden="true"></span>
+            </button>
+            <input id="apiToken" class="token-input" type="password" autocomplete="off" placeholder="API token" />
+            <span id="health" class="health">Checking system</span>
+          </div>
+        </form>
+      </section>
+
+      <section class="workspace" aria-live="polite">
+        <div class="panel result-panel hero-panel">
+          <div class="panel-head">
+            <h2>Output Review</h2>
+            <span id="runId">No run yet</span>
+          </div>
+          <p id="finalResponse" class="final">Waiting for an instruction.</p>
+          <div id="summaryCards" class="summary-cards"></div>
+          <div id="actionLinks" class="action-links"></div>
+        </div>
+
+        <div class="review-grid">
+          <article class="panel">
+            <div class="panel-head">
+              <h2>Content Outline</h2>
+              <span id="contentMeta">No content</span>
+            </div>
+            <div id="contentOutline" class="outline empty">Run the agent to preview the content sections.</div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head">
+              <h2>SEO & Taxonomy</h2>
+              <span id="seoState">Idle</span>
+            </div>
+            <div id="seoSummary" class="seo-summary empty">SEO details will appear here after execution.</div>
+          </article>
+        </div>
+
+        <div class="panel result-panel">
+          <div class="panel-head">
+            <h2>Execution Timeline</h2>
+            <span id="timelineState">Idle</span>
+          </div>
+          <div id="timeline" class="timeline"></div>
+        </div>
+
+        <div class="grid">
+          <article class="panel">
+            <div class="panel-head">
+              <h2>Plan</h2>
+              <span id="planCount">0 steps</span>
+            </div>
+            <pre id="planOutput">{}</pre>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head">
+              <h2>Verification</h2>
+              <span id="verifyState">Idle</span>
+            </div>
+            <pre id="verifyOutput">{}</pre>
+          </article>
+        </div>
+
+        <aside class="panel runs-panel">
+          <div class="panel-head">
+            <h2>Recent Runs</h2>
+            <button id="refreshRuns" class="icon-button" type="button" title="Refresh runs">↻</button>
+          </div>
+          <div id="runs" class="runs"></div>
+        </aside>
+      </section>
+    </main>
+
+    <template id="stepTemplate">
+      <div class="step">
+        <div class="step-index"></div>
+        <div>
+          <strong></strong>
+          <p></p>
+        </div>
+      </div>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

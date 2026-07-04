@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: seo-aeo-geo-agent
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: AWA_HOST
+        value: 0.0.0.0
+      - key: AWA_PORT
+        value: "8787"
+      - key: AWA_DRY_RUN
+        sync: false
+      - key: AWA_AUTO_PUBLISH
+        sync: false
+      - key: AWA_API_TOKEN
+        sync: false
+      - key: AWA_ALLOWED_WORDPRESS_HOSTS
+        sync: false
+      - key: AWA_MAX_REQUEST_BYTES
+        value: "250000"
+      - key: WORDPRESS_BASE_URL
+        sync: false
+      - key: WORDPRESS_USERNAME
+        sync: false
+      - key: WORDPRESS_APP_PASSWORD
+        sync: false
+      - key: WORDPRESS_SEO_PLUGIN
+        value: rankmath
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ANTHROPIC_MODEL
+        value: claude-sonnet-5
+      - key: ANTHROPIC_FALLBACK_MODELS
+        value: claude-opus-4-8,claude-haiku-4-5,claude-fable-5
+      - key: AWA_ENABLE_LIVE_RESEARCH
+        sync: false
+      - key: AWA_WEB_SEARCH_PROVIDER
+        sync: false
+      - key: TAVILY_API_KEY
+        sync: false
